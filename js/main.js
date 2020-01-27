@@ -136,3 +136,46 @@ $(window).on('load', function() {
 
 })(jQuery);
 
+
+const signup = () => {
+	const firstname = document.getElementById("firstname").value;
+	const lastname = document.getElementById("lastname").value;
+	const gender = document.getElementById("gender").value;
+	const status = document.getElementById("status").value;
+	const country = document.getElementById("country").value;
+	const phone = document.getElementById("phone").value;
+	const address = document.getElementById("address").value;
+	const occupation = document.getElementById("occupation").value;
+	const email = document.getElementById("email").value;
+	const password = document.getElementById("password").value;
+	let url = `https://sprout-backends.herokuapp.com/api/v1/signup`;
+	fetch(url, { 
+		method: 'POST', 
+		headers : new Headers({"Content-Type": "application/json; charset=UTF-8"}),
+		 body:JSON.stringify({
+			 "firstname": firstname,
+		  "lastname":lastname, 
+		  "gender": gender, 
+		  "status": status, 
+		  "country": country,
+		  "phone": phone, 
+		  "address": address,
+		  "occupation": occupation,
+		  "email": email ,
+		  "password": password
+		}) })
+		.then((res) => res.json())
+		.then((datas) => {
+			if (datas.status === 201) {
+				const { data: { data }} = datas;
+				console.log(data);
+
+			} else {
+
+			}
+
+		})
+		.catch((err)=>console.log(err));
+
+	return false;
+}

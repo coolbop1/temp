@@ -3,8 +3,8 @@
 <head>
 	<title>SPROUT | Loans | Credit</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="loans HTML Template">
-	<meta name="keywords" content="loans, html">
+	<meta name="description" content="SPROUT | Loans | Credit">
+	<meta name="keywords" content="SPROUT | Loans | Credit">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- Favicon -->
@@ -76,11 +76,32 @@
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<form class="hero-form">
-						<input type="text" placeholder="Your Name">
-						<input type="text" placeholder="Your E-mail">
-						<input type="text" placeholder="Your Phone">
-						<button class="site-btn">Open an account now!</button>
+					<form class="hero-form show" id="signupform" method="POST" onsubmit="return  signup()">
+						<input required id="firstname" type="text" placeholder="First Name">
+						<input required id="lastname" type="text" placeholder="Last Name">
+						<select required id="gender">
+							<option value="">Gender</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</select>
+						<select required id="status">
+							<option value="">Marital Status</option>
+							<option value="single">Single</option>
+							<option value="married">Married</option>
+							<option value="widowed">Widowed</option>
+							<option value="divorced">Divorced</option>
+						</select>
+						<select required id="country">
+							<option value="">Country</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</select>
+						<input required type="tel" id="phone" placeholder="Phone Number">
+						<input required type="text" id="address" placeholder="Address">
+						<input required id="occupation" type="text" placeholder="Occupation">
+						<input required id="email" type="email" placeholder="Your E-mail">
+						<input required type="password" id="password" placeholder="********">
+						<button  class="site-btn">Open an account now!</button >
 					</form>
 					<br>
 					<div class="tab-element">
