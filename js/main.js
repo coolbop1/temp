@@ -49,47 +49,6 @@ $(window).on('load', function() {
 		items: 1,
 		autoplay: true
 	});
-
-	/*--------------------------
-		Loans slide calculator
-	------------------------------*/
-	$("#slider-range-max").slider({
-	  range: "max",
-	  min: 1000,
-	  max: 15000,
-	  step: 10,
-	  change: function (event, ui) {
-		$("#loan-value").text('$' + ui.value);
-		$("#lone-emi").text('$' + emi(ui.value));
-		console.log(ui);
-		
-	  },
-	  slide: function (event, ui) {
-		$("#loan-value").text('$' + ui.value);
-		$("#lone-emi").text('$' + emi(ui.value));
-	  }
-	});
-  
-	$("#lc-inc").click(function () {
-	  var value = $("#slider-range-max").slider("value");
-	  var step = $("#slider-range-max").slider("option", "step");
-	  $("#slider-range-max").slider("value", value + step);
-	  
-	});
-
-	$("#lc-dec").click(function () {
-	  var value = $("#slider-range-max").slider("value")
-	  var step = $("#slider-range-max").slider("option", "step");
-	  $("#slider-range-max").slider("value", value - step);
-	});
-
-	function emi (amount) {
-		var result,
-			emi = 52;
-		result = Math.round(amount/emi);
-		return result;
-	}
-
 	/*------------------
 		Accordions
 	--------------------*/
@@ -136,18 +95,65 @@ $(window).on('load', function() {
 
 })(jQuery);
 
+const login = () => {
+	//console.log("hiii");
+	let emails = document.getElementById("logemail").value;
+	let passwords = document.getElementById("logpassword").value;
+	let url = `https://sprout-backends.herokuapp.com/api/v1/login`;
+	fetch(url, { 
+		method: 'POST', 
+		headers : new Headers({"Content-Type": "application/json; charset=UTF-8"}),
+		 body:JSON.stringify({
+		  "email": emails ,
+		  "password": passwords
+		}) })
+		.then((res) => res.json())
+		.then((datas) => {
+			if (datas.status === "success") {
+				const { data, message} = datas;
+				const {  token, name, id, gender ,country, address, occupation,email,balance,idcard,phone,acctnumber} = data;
+				sessionStorage.setItem('sproutname',name);
+				sessionStorage.setItem('sproutid',id);
+				sessionStorage.setItem('sproutgender', gender);
+				sessionStorage.setItem('sproutcountry', country);
+				sessionStorage.setItem('sproutaddress', address);
+				sessionStorage.setItem('sproutoccupation', occupation);
+				sessionStorage.setItem('sproutemail', email);
+				sessionStorage.setItem('sproutbalance', balance);
+				sessionStorage.setItem('sproutidcard', idcard);
+				sessionStorage.setItem('sproutphone', phone);
+				sessionStorage.setItem('sproutacctnumber', acctnumber);
+				window.localStorage.setItem('accessToken', token);
+				document.getElementById("success-message").innerHTML = message;
+				document.getElementById("success-message").classList.replace("myhide", "myshow");
+				setTimeout("succesRegistered()", 2000);
+
+			} else {
+				const { message } = datas;
+				document.getElementById("error-message").innerHTML = message;
+				document.getElementById("error-message").classList.replace("myhide", "myshow");
+				setTimeout("errorRegistered()", 2000);
+			}
+
+		})
+		.catch((err)=>console.log(err));
+		return false;
+}
 
 const signup = () => {
-	const firstname = document.getElementById("firstname").value;
-	const lastname = document.getElementById("lastname").value;
-	const gender = document.getElementById("gender").value;
-	const status = document.getElementById("status").value;
-	const country = document.getElementById("country").value;
-	const phone = document.getElementById("phone").value;
-	const address = document.getElementById("address").value;
-	const occupation = document.getElementById("occupation").value;
-	const email = document.getElementById("email").value;
-	const password = document.getElementById("password").value;
+	const signupButton = document.getElementById("register");
+	signupButton.innerHTML = "Creating Account..."
+	let firstname = document.getElementById("firstname").value;
+	let lastname = document.getElementById("lastname").value;
+	let gender = document.getElementById("gender").value;
+	let status = document.getElementById("status").value;
+	let country = document.getElementById("country").value;
+	let phone = document.getElementById("phone").value;
+	let address = document.getElementById("address").value;
+	let occupation = document.getElementById("occupation").value;
+	let email = document.getElementById("email").value;
+	let password = document.getElementById("password").value;
+	let username = document.getElementById("username").value;
 	let url = `https://sprout-backends.herokuapp.com/api/v1/signup`;
 	fetch(url, { 
 		method: 'POST', 
@@ -162,16 +168,35 @@ const signup = () => {
 		  "address": address,
 		  "occupation": occupation,
 		  "email": email ,
+		  "username": username,
 		  "password": password
 		}) })
 		.then((res) => res.json())
 		.then((datas) => {
-			if (datas.status === 201) {
-				const { data: { data }} = datas;
-				console.log(data);
+			if (datas.status === "success") {
+				const { data, message} = datas;
+				const {  token, name, id, gender ,country, address, occupation,email,balance,idcard,phone,acctnumber} = data;
+				sessionStorage.setItem('sproutname',name);
+				sessionStorage.setItem('sproutid',id);
+				sessionStorage.setItem('sproutgender', gender);
+				sessionStorage.setItem('sproutcountry', country);
+				sessionStorage.setItem('sproutaddress', address);
+				sessionStorage.setItem('sproutoccupation', occupation);
+				sessionStorage.setItem('sproutemail', email);
+				sessionStorage.setItem('sproutbalance', balance);
+				sessionStorage.setItem('sproutidcard', idcard);
+				sessionStorage.setItem('sproutphone', phone);
+				sessionStorage.setItem('sproutacctnumber', acctnumber);
+				window.localStorage.setItem('accessToken', token);
+				document.getElementById("success-message").innerHTML = message;
+				document.getElementById("success-message").classList.replace("myhide", "myshow");
+				setTimeout("succesRegistered()", 2000);
 
 			} else {
-
+				const { message } = datas;
+				document.getElementById("error-message").innerHTML = message;
+				document.getElementById("error-message").classList.replace("myhide", "myshow");
+				setTimeout("errorRegistered()", 2000);
 			}
 
 		})
@@ -179,3 +204,54 @@ const signup = () => {
 
 	return false;
 }
+const succesRegistered = () => {
+	document.getElementById("success-message").classList.replace("myshow","myhide");
+	document.getElementById("success-message").innerHTML = ""; 	
+	window.location ="dashboard.html";
+}
+const errorRegistered = () => {
+	document.getElementById("error-message").classList.replace("myshow","myhide");
+	document.getElementById("error-message").innerHTML = ""; 
+}
+
+
+/*--------------------------
+		Loans slide calculator
+	------------------------------*/
+	var der= parseInt(document.getElementById("amountTos").innerHTML);
+	$("#slider-range-max").slider({
+	  range: "max",
+	  min: 0,
+	  max: der,
+	  step: 10,
+	  change: function (event, ui) {
+		$("#loan-value").text('R' + formatter.format(ui.value).replace("$", ""));
+		$("#lone-emi").text('R' + formatter.format(emi(ui.value)).replace("$", ""));
+		console.log(ui);
+		
+	  },
+	  slide: function (event, ui) {
+		$("#loan-value").text('R' + formatter.format(ui.value).replace("$", ""));
+		$("#lone-emi").text('R' + formatter.format(emi(ui.value)).replace("$", ""));
+	  }
+	});
+  
+	$("#lc-inc").click(function () {
+	  var value = $("#slider-range-max").slider("value");
+	  var step = $("#slider-range-max").slider("option", "step");
+	  $("#slider-range-max").slider("value", value + step);
+	  
+	});
+
+	$("#lc-dec").click(function () {
+	  var value = $("#slider-range-max").slider("value")
+	  var step = $("#slider-range-max").slider("option", "step");
+	  $("#slider-range-max").slider("value", value - step);
+	});
+
+	function emi (amount) {
+		var result,
+			emi = 1;
+		result = Math.round(amount/emi);
+		return result;
+	}
