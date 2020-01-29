@@ -96,7 +96,8 @@ $(window).on('load', function() {
 })(jQuery);
 
 const login = () => {
-	//console.log("hiii");
+	const loginButton = document.getElementById("logins");
+	loginButton.innerHTML = "Signing In...";
 	let emails = document.getElementById("logemail").value;
 	let passwords = document.getElementById("logpassword").value;
 	let url = `https://sprout-backends.herokuapp.com/api/v1/login`;
@@ -130,6 +131,7 @@ const login = () => {
 
 			} else {
 				const { message } = datas;
+				loginButton.innerHTML = "login";
 				document.getElementById("error-message").innerHTML = message;
 				document.getElementById("error-message").classList.replace("myhide", "myshow");
 				setTimeout("errorRegistered()", 2000);
@@ -194,6 +196,7 @@ const signup = () => {
 
 			} else {
 				const { message } = datas;
+				signupButton.innerHTML = "Open an account now!";
 				document.getElementById("error-message").innerHTML = message;
 				document.getElementById("error-message").classList.replace("myhide", "myshow");
 				setTimeout("errorRegistered()", 2000);
