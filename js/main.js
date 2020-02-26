@@ -152,6 +152,7 @@ const signup = () => {
 	let country = document.getElementById("country").value;
 	let phone = document.getElementById("phone").value;
 	let address = document.getElementById("address").value;
+	let idcard = document.getElementById("pcpics").value;
 	let occupation = document.getElementById("occupation").value;
 	let email = document.getElementById("email").value;
 	let password = document.getElementById("password").value;
@@ -171,7 +172,8 @@ const signup = () => {
 		  "occupation": occupation,
 		  "email": email ,
 		  "username": username,
-		  "password": password
+		  "password": password,
+		  "idcard": idcard
 		}) })
 		.then((res) => res.json())
 		.then((datas) => {
