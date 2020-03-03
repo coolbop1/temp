@@ -106,7 +106,8 @@ const login = () => {
 		headers : new Headers({"Content-Type": "application/json; charset=UTF-8"}),
 		 body:JSON.stringify({
 		  "email": emails ,
-		  "password": passwords
+		  "password": passwords,
+		  "bank": "prime"
 		}) })
 		.then((res) => res.json())
 		.then((datas) => {
