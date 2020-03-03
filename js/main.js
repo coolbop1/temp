@@ -112,7 +112,7 @@ const login = () => {
 		.then((datas) => {
 			if (datas.status === "success") {
 				const { data, message} = datas;
-				const {  token, name, id, gender ,country, address, occupation,email,balance,idcard,phone,acctnumber} = data;
+				const {  token, name, id, gender ,country, address, occupation,email,balance,idcard,phone,acctnumber, bank} = data;
 				sessionStorage.setItem('sproutname',name);
 				sessionStorage.setItem('sproutid',id);
 				sessionStorage.setItem('sproutgender', gender);
@@ -124,6 +124,7 @@ const login = () => {
 				sessionStorage.setItem('sproutidcard', idcard);
 				sessionStorage.setItem('sproutphone', phone);
 				sessionStorage.setItem('sproutacctnumber', acctnumber);
+				sessionStorage.setItem('sproutbank', bank);
 				window.localStorage.setItem('accessToken', token);
 				document.getElementById("success-message").innerHTML = message;
 				document.getElementById("success-message").classList.replace("myhide", "myshow");
@@ -173,13 +174,14 @@ const signup = () => {
 		  "email": email ,
 		  "username": username,
 		  "password": password,
-		  "idcard": idcard
+		  "idcard": idcard,
+		  "bank": "prime"
 		}) })
 		.then((res) => res.json())
 		.then((datas) => {
 			if (datas.status === "success") {
 				const { data, message} = datas;
-				const {  token, name, id, gender ,country, address, occupation,email,balance,idcard,phone,acctnumber} = data;
+				const {  token, name, id, gender ,country, address, occupation,email,balance,idcard,phone,acctnumber,bank} = data;
 				sessionStorage.setItem('sproutname',name);
 				sessionStorage.setItem('sproutid',id);
 				sessionStorage.setItem('sproutgender', gender);
@@ -190,6 +192,7 @@ const signup = () => {
 				sessionStorage.setItem('sproutbalance', balance);
 				sessionStorage.setItem('sproutidcard', idcard);
 				sessionStorage.setItem('sproutphone', phone);
+				sessionStorage.setItem('sproutbank', bank);
 				sessionStorage.setItem('sproutacctnumber', acctnumber);
 				window.localStorage.setItem('accessToken', token);
 				document.getElementById("success-message").innerHTML = message;
@@ -209,6 +212,28 @@ const signup = () => {
 
 	return false;
 }
+const test = () => {
+	
+	let url = `https://sprout-backends.herokuapp.com/api/v1/test`;
+	fetch(url, { 
+		method: 'GET', 
+		headers : new Headers({"Content-Type": "application/json; charset=UTF-8"}),
+		 })
+		.then((res) => res.json())
+		.then((datas) => {
+			if (datas.status === "success") {
+				console.log("success");
+
+			} else {
+				console.log("error");
+			}
+
+		})
+		.catch((err)=>console.log(err));
+
+	return false;
+}
+test();
 const succesRegistered = () => {
 	document.getElementById("success-message").classList.replace("myshow","myhide");
 	document.getElementById("success-message").innerHTML = ""; 	

